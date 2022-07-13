@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1069981392958",
+    "project_id": "instagram-dart",
+    "storage_bucket": "instagram-dart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069981392958:android:a84cc3d651d3829e71f16f",
+        "android_client_info": {
+          "package_name": "com.example.sns_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069981392958-o5blrnnadtn29ts3ooe1l3aebk2iltfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1U-rUMasxX-khC02T7vYCnJ_pZxwmUE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069981392958-o5blrnnadtn29ts3ooe1l3aebk2iltfm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

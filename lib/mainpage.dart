@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:sns_test/mainpages/homescreen.dart';
 import 'package:sns_test/mainpages/mylikescreen.dart';
 import 'package:sns_test/mainpages/myscreen.dart';
 import 'package:sns_test/mainpages/showgridscreen.dart';
+import 'package:sns_test/testpage.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -40,8 +43,13 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar : AppBar(
-        title: const Text('Instagram', style: TextStyle(fontFamily: 'InstaTitle', fontSize: 25,
-        color: Colors.white,),),
+        title: GestureDetector(
+          onTap: (){
+            Get.to(TestPage());
+          },
+          child: const Text('Instagram', style: TextStyle(fontFamily: 'InstaTitle', fontSize: 25,
+            color: Colors.white,),),
+        ),
         backgroundColor: Colors.black,
       ),
       bottomNavigationBar: BottomNavigationBar(

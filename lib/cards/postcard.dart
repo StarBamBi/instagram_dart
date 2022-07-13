@@ -5,8 +5,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PostCard extends StatefulWidget {
   int number;
+  String authorName;
 
-  PostCard({required this.number});
+  PostCard({required this.number, required this.authorName});
 
   @override
   _PostCardState createState() => _PostCardState();
@@ -51,13 +52,14 @@ class _PostCardState extends State<PostCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                children: const [
-                  CircleAvatar(
+                children: [
+                  const CircleAvatar(
                     radius: 15,
                     backgroundImage: NetworkImage('https://www.mcicon.com/wp-content/uploads/2021/03/Cat-14.jpg'),
                   ),
-                  SizedBox(width: 8,),
-                  Text('taejun.kim', style: TextStyle(color: Colors.white,),)
+                  const SizedBox(width: 8,),
+                  const Text('taejun.kim', style: TextStyle(color: Colors.white,),),
+                  Text("${widget.authorName}", style: TextStyle(color: Colors.white,),),
                 ],
               ),
 
@@ -141,6 +143,7 @@ class _PostCardState extends State<PostCard> {
           child: Row(
             children: const[
               Text('taejun.kim ', style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),),
+              SizedBox(width: 5,),
               Text('ya-yong', style: TextStyle(color: Colors.white, fontSize: 11),),
             ],
           ),
@@ -150,11 +153,16 @@ class _PostCardState extends State<PostCard> {
           height: 50,
           width: MediaQuery.of(context).size.width,
           color: Colors.black,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
+              const Text('댓글 22개 모두보기',style: TextStyle(color: Colors.grey, fontSize: 10),),
+              Row(
                 children: const [
-                  Text('댓글 22개 모두 보기', style: TextStyle(color: Colors.grey, fontSize: 10),),
+                  Text('wns2', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 11),),
+                  SizedBox(width: 5,),
+                  Text('엄청 귀엽다!', style: TextStyle(color: Colors.white, fontSize: 11),)
                 ],
               )
             ],
