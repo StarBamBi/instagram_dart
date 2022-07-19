@@ -20,18 +20,33 @@ class _HomeScreenState extends State<HomeScreen> {
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
-        ListView.separated(
-          itemCount: 30,
-          itemBuilder: (BuildContext context, int index) {
-            return PostCard(
-              number: index,
-                authorName : '하이'
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return Container(height: 10,color: Colors.black,);
-          },
-        ),
+        StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance.collection('Posts').snapshots(),
+            builder: (context,snapshot) {
+
+              if(snapshot.connectionState==ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data?.docs.length,
+                  itemBuilder: (context, int index) {
+                    return PostCard(number: index, authorName: snapshot.data?.docs[index]['authorName'], firstPicUrl: snapshot.data?.docs[index]['firstPicUrl'], explain: snapshot.data?.docs[index]['explain']);
+                  },
+                );
+              }
+            }),
+        // ListView.separated(
+        //   itemCount: 30,
+        //   itemBuilder: (BuildContext context, int index) {
+        //     return PostCard(
+        //       number: index,
+        //         authorName : '하이'
+        //     );
+        //   },
+        //   separatorBuilder: (BuildContext context, int index) {
+        //     return Container(height: 10,color: Colors.black,);
+        //   },
+        // ),
         GestureDetector(
           onTap: (){
             Get.to(CreatePostPage());
@@ -47,26 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Icon(Icons.add, color: Colors.white,),
           ),
         ),
-        StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance.collection('Posts').snapshots(),
-            builder: (context,snapshot) {
-              if(snapshot.connectionState==ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              }
 
-              ListView.separated(
-                itemCount: 30,
-                itemBuilder: (BuildContext context, int index) {
-                  return PostCard(
-                      number: index,
-                      authorName : snapshot.data?.docs[index]['authorName']
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Container(height: 10,color: Colors.black,);
-                },
-              );
-            })
       ],
     );
   }

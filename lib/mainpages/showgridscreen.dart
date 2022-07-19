@@ -13,7 +13,10 @@ class _ShowGridScreenState extends State<ShowGirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Text("쇼그리드입니다."),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      color: Colors.black,
+      child: const Text("쇼그리드.", style: TextStyle(color: Colors.white),),
     );
   }
 }

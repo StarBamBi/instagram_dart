@@ -15,9 +15,11 @@ class _CreatePostPageState extends State<CreatePostPage> {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
+  TextEditingController authorController = TextEditingController();
   String postTitle = "";
   String content = "";
   String dataTest = "";
+  String authorName = "";
 
   String _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
   Random _rnd = Random();
@@ -45,6 +47,18 @@ class _CreatePostPageState extends State<CreatePostPage> {
               },
             ),
             TextField(
+              controller: authorController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '작성자',
+              ),
+              onChanged: (value) {
+                setState(() {
+                  authorName = value;
+                });
+              },
+            ),
+            TextField(
               controller: contentController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -68,7 +82,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 "firstPicUrl":"",
                 "firstPicWidth":0,
                 "firstPicHeight":0,
-                "authorName":"huni",
+                "authorName": authorName,
                 "like":0,
               });
             }, child: Text('업로드 하기')),

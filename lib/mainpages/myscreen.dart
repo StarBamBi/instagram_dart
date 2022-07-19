@@ -13,7 +13,10 @@ class _MyScreenState extends State<MyScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Text("마이페이지."),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      color: Colors.black,
+      child: const Text("마이페이지.", style: TextStyle(color: Colors.white),),
     );
   }
 }
